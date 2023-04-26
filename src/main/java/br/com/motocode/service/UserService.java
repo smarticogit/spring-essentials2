@@ -22,6 +22,10 @@ public class UserService {
         return userRepository.findAll(pageable);
     }
 
+    public List<User>  listAllNoPageable() {
+        return userRepository.findAll();
+    }
+
     public List<User> findByName(String name) {
         return userRepository.findByName(name);
     }
@@ -46,4 +50,5 @@ public class UserService {
         user.setId(savedUser.getId());
         userRepository.save(user);
     }
+
 }

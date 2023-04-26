@@ -27,8 +27,13 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<Page<User>> list(Pageable pageable) {
-         log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
+        log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
         return ResponseEntity.ok(userService.listAll(pageable));
+    }
+    @GetMapping(path = "/all")
+    public ResponseEntity<List<User>> listAll() {
+         log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
+        return ResponseEntity.ok(userService.listAllNoPageable());
     }
 
     @GetMapping(path = "/{id}")
